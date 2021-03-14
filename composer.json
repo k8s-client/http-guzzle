@@ -1,0 +1,54 @@
+{
+  "name": "k8s/http-guzzle",
+  "description": "Guzzle based HttpClient factory for k8s/client",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chad Sikorra",
+      "email": "Chad.Sikorra@gmail.com"
+    }
+  ],
+  "keywords": [
+    "k8s",
+    "kubernetes"
+  ],
+  "require": {
+    "php": ">=7.2",
+    "guzzlehttp/guzzle": "^7.0",
+    "k8s/core": "^1.3",
+    "psr/http-client": "^1.0"
+  },
+  "require-dev": {
+    "ext-mbstring": "*",
+    "friendsofphp/php-cs-fixer": "^2.0",
+    "mockery/mockery": "~1.3.0",
+    "phpstan/phpstan": "^0.12",
+    "phpunit/phpunit": "^8.0"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "K8s\\HttpGuzzle\\": "src/K8s/HttpGuzzle"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "unit\\K8s\\HttpGuzzle\\": "tests/unit/K8s/HttpGuzzle"
+    }
+  },
+  "scripts": {
+    "cs-fix": [
+      "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+      "php-cs-fixer fix src/ --rules=@PSR2"
+    ],
+    "analyse": [
+      "phpstan analyse"
+    ],
+    "test-unit": [
+      "phpunit --testsuite unit --coverage-clover coverage-unit.xml"
+    ]
+  }
+}
